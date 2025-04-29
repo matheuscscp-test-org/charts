@@ -1,0 +1,6 @@
+apiVersion: v2
+name: flux-semver
+description: A Helm chart for testing a bug in flux semver.
+type: application
+version: 2025.01.02
+appVersion: "1.3.2"
