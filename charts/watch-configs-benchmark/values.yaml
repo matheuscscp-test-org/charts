@@ -1,0 +1,4 @@
+helmReleases: 1
+ui:
+  color: "#ff006fff"
+  message: "Hello from Podinfo!"
