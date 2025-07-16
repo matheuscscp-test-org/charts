@@ -1,0 +1,55 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: podinfo-chart
+  namespace: benchmark
+spec:
+  interval: 1h
+  url: oci://ghcr.io/stefanprodan/charts/podinfo
+  # Default values
+  # https://github.com/stefanprodan/podinfo/blob/master/charts/podinfo/values.yaml
+  ref:
+    semver: 6.8.0
+{{- range $i := until (int .Values.helmReleases) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: podinfo-values-{{ add $i 1 }}
+  namespace: benchmark
+data:
+  values.yaml: |
+    ui:
+      color: "{{ .Values.ui.color }}"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: podinfo-secret-{{ add $i 1 }}
+  namespace: benchmark
+type: Opaque
+stringData:
+  values.yaml: |
+    ui:
+      message: "{{ .Values.ui.message }}"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: podinfo-{{ add $i 1 }}
+  namespace: benchmark
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: podinfo-chart
+  interval: 1h
+  driftDetection:
+    mode: enabled
+  values:
+    replicaCount: 0
+  valuesFrom:
+  - kind: ConfigMap
+    name: podinfo-values-{{ add $i 1 }}
+  - kind: Secret
+    name: podinfo-secret-{{ add $i 1 }}
+{{- end }}
