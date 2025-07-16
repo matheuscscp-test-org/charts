@@ -23,6 +23,15 @@ entries:
     version: 1.5.2
   watch-configs-benchmark:
   - apiVersion: v2
+    created: "2025-07-16T15:36:41.341891177Z"
+    description: A Helm chart for benchmarking the Flux watch configs feature.
+    digest: 28c249dac855122275cdc40690917861559869a7bbc12a9d878cd4dad87d1130
+    name: watch-configs-benchmark
+    type: application
+    urls:
+    - https://github.com/matheuscscp-test-org/charts/releases/download/watch-configs-benchmark-0.2.0/watch-configs-benchmark-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     created: "2025-07-16T15:27:06.222222419Z"
     description: A Helm chart for benchmarking the Flux watch configs feature.
     digest: 7e26781360e64959e5e5d3376dfb227ba353fa1828d2ce3075df9813ae3cd53f
@@ -31,4 +40,4 @@ entries:
     urls:
     - https://github.com/matheuscscp-test-org/charts/releases/download/watch-configs-benchmark-0.1.0/watch-configs-benchmark-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-16T15:27:06.222242858Z"
+generated: "2025-07-16T15:36:41.341911155Z"
