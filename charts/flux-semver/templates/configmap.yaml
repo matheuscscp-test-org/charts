@@ -4,4 +4,4 @@ metadata:
   name: flux-semver
 data:
   foo: {{ .Values.foo }}
-  bar: {{ .Values.bar }}
+  bar: {{ required "Breaking chart build for flux test" .Values.bar }}
