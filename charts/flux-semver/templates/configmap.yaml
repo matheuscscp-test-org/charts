@@ -5,3 +5,4 @@ metadata:
   namespace: flux-system
 data:
   foo: {{ .Values.foo }}
+  bar: {{ .Values.bar }}
